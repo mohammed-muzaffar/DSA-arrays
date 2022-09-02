@@ -1,0 +1,44 @@
+//Brute force approach 
+// By sorting the array will gives the required answer.
+// Time complexity is o(nlogn).
+// Space complexity is o(1).
+
+
+
+//Optimize approach of brute force.
+
+//step-1: Traverse the array in linearly and count the frequency of elements in an array.
+//step-2: Again we traverse the array to place the elemenst in output array.
+//Time complexity is o(n)+o(n)=o(n).
+//Space complexity is o(n)+o(n)=o(n).
+
+
+//Most optimize solution
+
+class Solution {
+    public void sortColors(int[] nums) {
+        if(nums == null || nums.length <= 1) return;
+        int low = 0, mid = 0, high = nums.length - 1;
+        while(mid <= high){
+            if(nums[mid] == 0){
+                swap(nums, low, mid);
+                low++;
+                mid++;
+            } else if(nums[mid] == 1){
+                mid++;
+            } else if(nums[mid] == 2){
+                swap(nums, mid, high);
+                    high--;
+            }
+        }
+    }
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
+
+//Time complexity is o(n).
+//Space complexity is o(1).
